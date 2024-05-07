@@ -14,8 +14,7 @@ import turniplabs.halplibe.util.RecipeEntrypoint;
 public class BuzzierThanBees implements ModInitializer, GameStartEntrypoint, RecipeEntrypoint {
     public static final String MOD_ID = "buzzierthanbees";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-	public static final Block hive = new BlockBuilder(MOD_ID)
-		.build(new BlockRotatableHorizontal("hive",2000, Material.wood){{}});
+	public static Block hive;
     @Override
     public void onInitialize() {
         LOGGER.info("BuzzierthanBees initialized.");
@@ -29,7 +28,8 @@ public class BuzzierThanBees implements ModInitializer, GameStartEntrypoint, Rec
 
 	@Override
 	public void afterGameStart() {
-
+		hive = new BlockBuilder(MOD_ID)
+			.build(new BlockRotatableHorizontal("hive",2000, Material.wood){{}});
 	}
 
 	@Override

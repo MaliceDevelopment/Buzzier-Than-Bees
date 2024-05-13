@@ -1,6 +1,7 @@
 package malicedev.buzzierthanbees;
 
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.client.render.block.model.BlockModelHorizontalRotation;
 import net.minecraft.core.block.Block;
 import net.minecraft.core.block.BlockRotatableHorizontal;
 import net.minecraft.core.block.material.Material;
@@ -17,10 +18,18 @@ public class BuzzierThanBees implements ModInitializer, GameStartEntrypoint, Rec
 	public static Block hive;
     @Override
     public void onInitialize() {
-        LOGGER.info("BuzzierthanBees initialized.");
-    }
+		LOGGER.info("BuzzierthanBees initialized.");
 
-
+		 hive = new BlockBuilder(MOD_ID)
+			 .setBlockModel((b) -> new BlockModelHorizontalRotation(b))
+			 .setNorthTexture("buzzierthanbees:block/hive_north")
+			 .setTopBottomTextures("buzzierthanbees:block/hive_top")
+			 .setSouthTexture("buzzierthanbees:block/hive")
+			 .setEastTexture("buzzierthanbees:block/hive")
+			 .setWestTexture("buzzierthanbees:block/hive")
+			.build(new BlockRotatableHorizontal("hive", 15999, Material.wood) {
+			});
+	}
 	@Override
 	public void beforeGameStart() {
 
@@ -28,8 +37,7 @@ public class BuzzierThanBees implements ModInitializer, GameStartEntrypoint, Rec
 
 	@Override
 	public void afterGameStart() {
-		hive = new BlockBuilder(MOD_ID)
-			.build(new BlockRotatableHorizontal("hive",2000, Material.wood){{}});
+
 	}
 
 	@Override
@@ -44,3 +52,4 @@ public class BuzzierThanBees implements ModInitializer, GameStartEntrypoint, Rec
 }
 
 
+// I <3 INTELLIJ&JAVA
